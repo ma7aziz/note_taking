@@ -1,0 +1,6 @@
+
+{% if user %}
+   {{user.username}} 
+   {% else %}
+   <a href="{%url 'signup' %}">Signup</a>
+{% endif %}
