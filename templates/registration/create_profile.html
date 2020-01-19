@@ -1,0 +1,12 @@
+<h1>Create profile</h1>
+{{user.username}}
+<form action="" method="POST"> 
+    {% csrf_token%}
+    {% for field in form%}
+    {{field.label_tag}} <br>
+    {{field}} <br>
+    {% endfor%}
+    <button>Save</button>
+</form>
+
+<a href="{% url 'index' %}">Skip For Now!</a>
