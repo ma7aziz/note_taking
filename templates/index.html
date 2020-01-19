@@ -13,3 +13,24 @@
    <a href="{%url 'signup' %}">Signup</a> <br>
    <a href="{%url 'login' %}">Login</a>
 {% endif %}
+
+{% if user.is_authenticated%}
+<button>New Note!</button>
+<form action="{% url 'note' %}" method="POST">
+    {% csrf_token%}
+    {{form.as_p}}
+    <button>Save</button>
+</form>
+
+{% if notes %}
+{% for note in notes%}
+<ul>
+    <li>{{note.title}}</li>  
+    <p>{{ note.pub_date}}</p> 
+    <p>{{note.body}}</p>
+    <a href="/delete_note/{{ note.id }}">Delete</a> 
+</ul>
+    
+{% endfor%}
+{%endif%}
+{%endif%}
