@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import datetime
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -25,4 +24,5 @@ class Note(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     body = models.TextField(max_length=800, blank=True, null=True)
     image = models.ImageField(upload_to='media/notes', blank=True)
-    pub_date = models.DateTimeField(default=datetime.now)
+    pub_date = models.DateTimeField(auto_now_add=True)
+

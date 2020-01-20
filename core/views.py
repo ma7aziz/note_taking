@@ -59,3 +59,8 @@ def delete_note(request, id):
     note = Note.objects.get(pk=id)
     note.delete()
     return redirect('index')
+
+def details(request,id):
+    note = Note.objects.get(pk=id)
+
+    return render(request,'note.html',{'note':note} )
